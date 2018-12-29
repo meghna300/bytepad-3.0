@@ -1,0 +1,76 @@
+.section-landing {
+    padding: 0;
+ 
+    background-image: url("/assets/Landing_background.svg");
+    background-size: cover;
+    &_text{
+        padding: 0;
+    }
+    &_image{
+        
+        height:100vh;
+        padding-left:20%;
+    }
+}
+.center{
+    position: absolute;
+    top:40%;
+    left:25%;
+    transform:translate(-25%,-50%);
+}
+.heading{
+   margin-top:7em;
+ 
+  &_title{
+      font-size:6em;
+      font-weight: 400;
+      line-height: 0.5;
+      
+  }
+   &_logo{
+      height: 20em;
+      text-align: center;
+      img{
+          height:100%;
+      }
+   } 
+}
+
+.text{
+    font-size:2em;
+}
+
+.search{
+    width: 100%;
+    
+    padding:0.5em;
+    padding-left:2em;
+    border-radius: 2em;
+    border: 2px solid #BCBCBC;
+    // margin-left:2em;
+    font-family:Arial, FontAwesome;
+    font-size:1.7em;
+
+    &:focus{
+        outline: none;
+        border: 2px solid blue;
+    }
+}
+
+.example{
+ margin: 1em;
+ font-size:1.5em;
+ box-sizing: border-box;
+ padding-left:1.7em;
+ text-align: center;
+}
+
+.button{
+    margin:1em;
+    font-size:2em;
+    border-radius:10px;
+    width:100%;
+    box-sizing: border-box;
+    background: linear-gradient(#6EB8E6,#7867AE);
+
+}

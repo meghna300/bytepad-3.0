@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+ html{
+    font-size:62.5%; // 1rem=10px, 10/16 = 62.5%
+
+    @media only screen and (min-width:1024px) {
+        font-size:62.5%; // 1rem=10px, 
+    }
+    @media only screen and (min-width:768px) {
+        font-size:56.25%; //1rem = 9px ,
+    }
+
+    @media only screen and (min-width:576px) {
+        font-size: 50%; //1rem = 8px
+    }
+
+    @media only screen and (max-width:576px) {
+        font-size: 30%; //1 rem = 4.8px;
+    }
+
+    @media only screen and (min-width:1440px) {
+        font-size: 75%; // 1rem = 12px ;
+    }
+}
+/*----variables----*/
+$color-blue: #6EB8E6;
+$color-purple: #7867AE;
