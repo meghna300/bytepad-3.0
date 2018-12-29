@@ -1,8 +1,13 @@
+.section{
+    margin:0;
+}
+
 .section-landing {
     padding: 0;
- 
+    margin: 0;
     background-image: url("/assets/Landing_background.svg");
     background-size: cover;
+    background-position: center;
     &_text{
         padding: 0;
     }

@@ -1,0 +1,38 @@
+.section{
+    margin:0;
+    padding:0;
+}
+.heading{
+    font-size: 5em;
+    margin:1em;
+    text-align: center;
+}
+.updates_heading{
+    text-align: center;
+    font-size:3em;
+    margin:1em;
+    background: linear-gradient(#6EB8E6,#7867AE);
+    color:#fff;
+    border-radius:10px;
+    border: 1px solid #fff;
+    padding: 0.5em;
+}
+
+.update_text{
+    text-align: center;
+    font-size:2em;
+    margin-top:2em;
+}
+
+.updates{
+    background: #F3F4F6;
+}
+.button{
+    margin:2em;
+    font-size:2em;
+    border-radius:10px;
+    width:80%;
+    box-sizing: border-box;
+    background: linear-gradient(#6EB8E6,#7867AE);
+
+}
