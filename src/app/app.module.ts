@@ -14,6 +14,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UpdateComponent } from './update/update.component';
 import { DownloadComponent } from './download/download.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,13 @@ import { FooterComponent } from './footer/footer.component';
     LandingComponent,
     UpdateComponent,
     DownloadComponent,
-    FooterComponent
+    FooterComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,

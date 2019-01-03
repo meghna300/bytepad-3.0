@@ -7,9 +7,14 @@
                <div class="col-6 heading"><h1 class="heading_title">BYTEPAD</h1> <br>
                   <span class="text">Powered by Software Incubator</span></div>
           
-           <div class="col-10"><input type="text" class="search"  placeholder="&#xF002; Enter Subject Name or Subject Code" ></div>
+           <div class="col-10">
+               <input [(ngModel)]="subject" value="tp.SubjectName" list="subject" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+               <datalist id="subject">
+                <option *ngFor="let tp of testPaper" value="{{tp.id}}" >{{tp.subjectName}}</option>
+               </datalist>
+        </div>
           <div class="col-6 example">Ex-Power Electronics or AS201 </div>
-          <div class="col-4"><button class="btn button">Search</button></div>
+          <div class="col-4"><button class="btn button" (click)="search()" >Search</button></div>
           </div>
           </div>
         
