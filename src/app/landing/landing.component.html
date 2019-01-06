@@ -1,26 +1,27 @@
 <div class="section-landing container-fluid no-gutter">
    <div class="row section">
-       <div class="col-sm-6 section-landing_text">
-          <div class="center">
-           <div class=" row justify-content-center">
-               <div class="heading_logo col-3"><img src="/assets/logo.svg"></div>
-               <div class="col-6 heading"><h1 class="heading_title">BYTEPAD</h1> <br>
+       <div class="col-md-6 section-landing_text justify-content-center">
+        <div class="landing">
+           <div class="row section justify-content-center">
+               <div class="heading_logo col-2"><img src="/assets/logo.svg"></div>
+               <div class="col-5 heading"><h1 class="heading_title">BYTEPAD</h1> <br>
                   <span class="text">Powered by Software Incubator</span></div>
           
-           <div class="col-10">
-               <input [(ngModel)]="subject" value="tp.SubjectName" list="subject" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+           <div class="col-md-8 col-10">
+               <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" list="subject" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
                <datalist id="subject">
-                <option *ngFor="let tp of testPaper" value="{{tp.id}}" >{{tp.subjectName}}</option>
+                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.subjectName}}</option>
                </datalist>
         </div>
-          <div class="col-6 example">Ex-Power Electronics or AS201 </div>
+          <div class="col-4 example">Ex-Power Electronics or AS201 </div>
           <div class="col-4"><button class="btn button" (click)="search()" >Search</button></div>
           </div>
-          </div>
         
+        </div>
        </div>
-       <div classs="col-sm-6">
-           <img src="/assets/landing.svg" class="section-landing_image">
+       <div class="col-md-6 section-landing_image">
+           <img src="/assets/landing.svg" class="screen_laptop">
+           <img src="/assets/app_land.svg" class="screen_mobile">
        </div>
    </div>
 </div>

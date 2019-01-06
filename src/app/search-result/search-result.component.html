@@ -1,3 +1,57 @@
-<p>
-  search-result works!
-</p>
+<div class="section container-fluid no-gutter">
+  <nav class="navbar navbar-expand-sm header">
+
+    <a class="navbar-brand brand" href="#">
+      <img src="/assets/logo.svg"   class="d-inline-block logo" alt=""> Bytepad
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">&#xF002;</span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+      </ul>
+      <form class="form-inline">
+        <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" class="form-control search" list="subject" type="search" placeholder="&#xF002; Enter Subject Name or Subject Code" aria-label="Search">
+        <datalist id="subject">
+          <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper">{{testPaper.subjectName}}</option>
+        </datalist>
+        <button class="btn button " type="submit" (click)="search()">Search</button>
+      </form>
+    </div>
+  
+  </nav>
+  <!-- <div class="row justify-content-center header section">
+    <div class="col-sm-3">
+      <div class="row section">
+       <div class="col-3 logo"><img src="/assets/logo.svg"></div>
+       <div class="col-6 brand"><h1 class="title">BYTEPAD</h1><br/>
+        <span class="sub-title">Powered by Software Incubator</span>'
+      </div>
+     </div>
+    </div>
+    <div class="col-sm-7">
+       <input type="text" class="search"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+       <button class="btn button">Search</button>
+    </div> -->
+  <!-- </div> -->
+  <div class="row justify-content-center section">
+    <div class="col-md-6 col-10 search_result">
+       <div class="row">
+         <div class="col-sm-6">
+           <h1 class="name">{{ subjectName }}</h1>
+           <hr/>
+           <p><span class="detail">Exam type</span>
+           <span class="detail">Session</span></p>
+           <p><span class="detail">Semester</span>
+           <span class="detail">Paper type</span></p>
+           <hr/>
+          <a href="{{ paperUrl }}" download="{{ subjectName }}"><img src="/assets/download.svg" class="download"><span class="download_text">Download Paper</span></a>
+         </div>
+          
+       </div>
+    </div>
+  </div>
+</div>

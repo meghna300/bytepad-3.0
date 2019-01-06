@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-landing',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  testPaper: TestPaper[];
-  subject: Number;
-  url: String = 'http://aac8defa.ngrok.io/';
+  testPapers: TestPaper[];
+  subject: String;
+  paperSelected: TestPaper;
+  url: String = environment.url;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -21,12 +23,20 @@ export class LandingComponent implements OnInit {
   }
   getPaper() {
     this.http.get<TestPaper[]>(this.url + 'api/subject_detail').subscribe(res => {
-      this.testPaper = res;
-      console.log(this.testPaper);
+      this.testPapers = res;
+      console.log(this.testPapers);
     });
   }
 
+  onPaperChange(subjectName: String) {
+     this.paperSelected  = this.getSelectedPaperbyName(subjectName);
+  }
+
+  getSelectedPaperbyName(selectedName: String): TestPaper {
+    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
+  }
+
   search () {
-  this.router.navigate(['search_result', this.subject]);
+  this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
   }
 }
