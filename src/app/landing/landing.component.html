@@ -10,14 +10,14 @@
            <div class="col-md-8 col-10">
                <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" list="subject" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
                <datalist id="subject">
-                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.subjectName}}</option>
+                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.SubjectName}}</option>
                </datalist>
         </div>
           <div class="col-4 example">Ex-Power Electronics or AS201 </div>
           <div class="col-4"><button class="btn button" (click)="search()" >Search</button></div>
           </div>
         
-        </div>
+        </div> 
        </div>
        <div class="col-md-6 section-landing_image">
            <img src="/assets/landing.svg" class="screen_laptop">

@@ -28,6 +28,16 @@
         font-size: 75%; // 1rem = 12px ;
     }
 }
+
+.loading-Image{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   width: 400px;
+   height: 400px;
+}
+
 /*----variables----*/
 $color-blue: #6EB8E6;
 $color-purple: #7867AE;

@@ -5,15 +5,15 @@ import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// import {NgsRevealModule} from 'ng-scrollreveal';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { UpdateComponent } from './update/update.component';
-import { DownloadComponent } from './download/download.component';
-import { FooterComponent } from './footer/footer.component';
+import { UpdateComponent } from './landing/update/update.component';
+import { DownloadComponent } from './landing/download/download.component';
+import { FooterComponent } from './landing/footer/footer.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
@@ -34,7 +34,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatAutocompleteModule,
     MatInputModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    // NgsRevealModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

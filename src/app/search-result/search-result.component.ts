@@ -57,11 +57,11 @@ export class SearchResultComponent implements OnInit {
   }
 
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
+    return this.testPapers.find(testPaper => testPaper.SubjectName === selectedName);
   }
 
   search() {
-    this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
+    this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
   }
 
 }

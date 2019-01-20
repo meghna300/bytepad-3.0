@@ -1,7 +1,7 @@
 import { TestPaper } from '../test-paper';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  testPapers: TestPaper[];
+  @Input() testPapers: TestPaper[];
   subject: String;
   paperSelected: TestPaper;
   url: String = environment.url;
@@ -33,10 +33,10 @@ export class LandingComponent implements OnInit {
   }
 
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
+    return this.testPapers.find(testPaper => testPaper.SubjectName === selectedName);
   }
 
   search () {
-  this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
+  this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
   }
 }

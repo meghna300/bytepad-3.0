@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://a9284d8a.ngrok.io/'
+  url: 'http://testapi.silive.in/'
 };
 
 /*

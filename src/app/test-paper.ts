@@ -1,5 +1,5 @@
 export interface TestPaper {
-    subjectName: String;
-    id: Number;
+    SubjectName: String;
+    Id: Number;
 
 }
