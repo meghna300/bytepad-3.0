@@ -5,7 +5,7 @@ import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// import {NgsRevealModule} from 'ng-scrollreveal';
+import { NgsRevealModule } from 'ng-scrollreveal';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +35,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatInputModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    // NgsRevealModule.forRoot()
+    NgsRevealModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

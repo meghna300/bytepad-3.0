@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-landing',
@@ -15,6 +16,9 @@ export class LandingComponent implements OnInit {
   subject: String;
   paperSelected: TestPaper;
   url: String = environment.url;
+  // search = $('#search');
+  // results = $('#subject');
+  // templateContent = $('#resultstemplate').content;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -27,6 +31,19 @@ export class LandingComponent implements OnInit {
       console.log(this.testPapers);
     });
   }
+  // onKeyUp() {
+  //   while (this.results.children.length) {
+  //     this.results.empty(this.results.firstChild);
+  //   }
+  //   const inputVal = new RegExp(this.search.value.trim(), 'i');
+  //   const set = Array.prototype.reduce.call(this.templateContent.cloneNode(true).children, function searchFilter(frag, item, i) {
+  //     if (inputVal.test(item.textContent) && frag.children.length < 6) {
+  //       frag.appendChild(item);
+  //     }
+  //     return frag;
+  //   }, document.createDocumentFragment());
+  //   this.results.appendChild(set);
+  // }
 
   onPaperChange(subjectName: String) {
      this.paperSelected  = this.getSelectedPaperbyName(subjectName);
@@ -36,7 +53,14 @@ export class LandingComponent implements OnInit {
     return this.testPapers.find(testPaper => testPaper.SubjectName === selectedName);
   }
 
-  search () {
-  this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
+  search_paper () {
+    if (this.paperSelected) {
+       this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
+    } else {
+      document.getElementById('modal').click();
+    }
   }
 }
+
+
+
