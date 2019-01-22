@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { PaperUrl } from '../paper-url';
 import { TestPaper } from '../test-paper';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SearchResultComponent implements OnInit {
   url: String = environment.url;
+  subject: String;
   paperSelected: TestPaper;
   testPapers: TestPaper[];
   subjectId: String;
@@ -57,11 +58,15 @@ export class SearchResultComponent implements OnInit {
   }
 
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.SubjectName === selectedName);
+    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
   }
 
   search() {
-    this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
+    if (this.paperSelected) {
+      this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
+    } else {
+      document.getElementById('modal').click();
+    }
   }
 
 }

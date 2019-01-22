@@ -160,3 +160,19 @@
   -webkit-transform: scale(4);
   transform: scale(4);
 }
+
+.modal-content{
+    border-radius: 20px;
+}
+
+.modal-body{
+    text-align: center;
+    font-size: 2em;
+    color: red;
+}
+.not_found_img{
+    height: 6em;
+}
+.modal-header{
+    border-bottom: none;
+}

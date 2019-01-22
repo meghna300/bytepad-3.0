@@ -10,42 +10,9 @@
            <div class="col-md-8 col-10">
                <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" list="subject" id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
                <datalist id="subject">
-                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.SubjectName}}</option>
+                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.subjectName}}</option>
                </datalist>
-            <!-- <template id="resultstemplate">
-                <option>Ray0</option>
-                <option>Ray1</option>
-                <option>Ray2</option>
-                <option>Ray3</option>
-                <option>Ray01</option>
-                <option>Ray11</option>
-                <option>Ray21</option>
-                <option>Ray31</option>
-                <option>Ray02</option>
-                <option>Ray12</option>
-                <option>Ray22</option>
-                <option>Ray32</option>
-                <option>Ray012</option>
-                <option>Ray112</option>
-                <option>Ray212</option>
-                <option>Ray312</option>
-                <option>Ray03</option>
-                <option>Ray13</option>
-                <option>Ray23</option>
-                <option>Ray33</option>
-                <option>Ray013</option>
-                <option>Ray113</option>
-                <option>Ray213</option>
-                <option>Ray313</option>
-                <option>Ray023</option>
-                <option>Ray123</option>
-                <option>Ray223</option>
-                <option>Ray323</option>
-                <option>Ray0123</option>
-                <option>Ray1123</option>
-                <option>Ray2123</option>
-                <option>Ray3123</option>
-            </template> -->
+            
         </div>
           <div class="col-4 example">Ex-Power Electronics or AS201 </div>
           <div class="col-4"><button class="btn button hvr-radial-out" (click)="search_paper()" >Search</button></div>
@@ -68,9 +35,10 @@
                 <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-100" id="myModalLabel">BYTEPAD</h4>
             </div>
             <div class="modal-body">
+                <img src="/assets/not_found.svg"  class="not_found_img"><br/>
+               Sorry ! <br/>
                Paper not found
             </div>
         </div>

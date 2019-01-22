@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import * as $ from 'jquery';
+import { NgsRevealConfig } from 'ng-scrollreveal';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent implements OnInit {
   @Input() testPapers: TestPaper[];
@@ -19,7 +20,9 @@ export class LandingComponent implements OnInit {
   // search = $('#search');
   // results = $('#subject');
   // templateContent = $('#resultstemplate').content;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, config: NgsRevealConfig) {
+    config.duration = 900;
+  }
 
   ngOnInit() {
     this.getPaper();
@@ -50,12 +53,12 @@ export class LandingComponent implements OnInit {
   }
 
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.SubjectName === selectedName);
+    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
   }
 
   search_paper () {
     if (this.paperSelected) {
-       this.router.navigate(['search_result', this.paperSelected.Id, this.paperSelected.SubjectName]);
+       this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
     } else {
       document.getElementById('modal').click();
     }
