@@ -20,6 +20,83 @@
         </datalist>
         <button class="btn button " type="submit" (click)="search()">Search</button>
       </form>
+      <div class="row mobile_option">
+        <div class="col-sm-2">
+          <select class="browser-default custom-select">
+            <option selected>All Exams</option>
+            <option value="4">UT</option>
+            <option value="3">PUT</option>
+            <option value="2">ST-2</option>
+            <option value="1">ST-1</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select class="browser-default custom-select">
+            <option selected>All Years</option>
+            <option value="1">2014-2015</option>
+            <option value="2">2015-2016</option>
+            <option value="3">2016-2017</option>
+            <option value="4">2017-2018</option>
+            <option value="5">2018-2019</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select class="browser-default custom-select">
+            <option selected>All Paper</option>
+            <option value="Question">Question Paper</option>
+            <option value="Solution">Solution</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select class="browser-default custom-select">
+            <option selected>Semester</option>
+            <option value="1">Even Semester</option>
+            <option value="2">Odd Semester</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+  </nav>
+  <nav class="navbar navbar-expand-sm sub_header desktop_option">
+  
+  
+    
+  
+    <div class="collapse navbar-collapse row section justify-content-center" id="navbarSupportedContent">
+     <div class="col-sm-2">
+      <select class="browser-default custom-select">
+        <option selected>All Exams</option>
+        <option value="4">UT</option>
+        <option value="3">PUT</option>
+        <option value="2">ST-2</option>
+        <option value="1">ST-1</option>
+      </select>
+      </div>
+      <div class="col-sm-2">
+      <select class="browser-default custom-select">
+        <option selected>All Years</option>
+        <option value="1">2014-2015</option>
+        <option value="2">2015-2016</option>
+        <option value="3">2016-2017</option>
+        <option value="4">2017-2018</option>
+        <option value="5">2018-2019</option>
+      </select>
+      </div>
+      <div class="col-sm-2">
+      <select class="browser-default custom-select">
+        <option selected>All Paper</option>
+        <option value="Question">Question Paper</option>
+        <option value="Solution">Solution</option>
+      </select>
+      </div>
+      <div class="col-sm-2">
+      <select class="browser-default custom-select">
+        <option selected>Semester</option>
+        <option value="1">Even Semester</option>
+        <option value="2">Odd Semester</option>
+      </select>
+      </div>
     </div>
   
   </nav>
@@ -38,15 +115,15 @@
     </div> -->
   <!-- </div> -->
   <div class="row justify-content-center section">
-    <div class="col-md-6 col-10 search_result">
+    <div class="col-md-6 col-10 search_result" *ngFor = "let paper of paper">
        <div class="row justify-content-center">
          <div class="col-sm-10">
            <h1 class="name">{{ subjectName }}</h1>
            <hr/>
-           <p class="details"><span class="detail">Exam type</span>
-           <span class="detail">Session</span>
-           <span class="detail">Semester</span>
-           <span class="detail">Paper type</span></p>
+           <p class="details"><span class="detail">{{ examType }}</span>
+           <span class="detail">{{ session }}</span>
+           <span class="detail">{{ semester }}</span>
+           <span class="detail">{{ paperType }}</span></p>
            <hr/>
           <p class="download"><a href="{{ paperUrl }}" download="{{ subjectName }}"><img src="/assets/download.svg" class="download"><span class="download_text">Download Paper</span></a></p>
          </div>

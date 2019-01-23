@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment.prod';
 import { PaperUrl } from '../paper-url';
 import { TestPaper } from '../test-paper';
 import { Router } from '@angular/router';
+import { SubjectDetails } from '../test-paper';
 
 @Component({
   selector: 'app-search-result',
@@ -18,8 +19,17 @@ export class SearchResultComponent implements OnInit {
   testPapers: TestPaper[];
   subjectId: String;
   subjectName: String;
-  paperUrl: String;
+  fileUrl: String;
+  examTypeId: number;
+  examType: String;
+  sessionId: number;
+  session: String;
+  paperType: String;
+  semesterType: number;
+  semester: String;
   paper: any;
+  paperUrl: String;
+  i: number;
   paperDetail: {};
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
@@ -40,7 +50,63 @@ export class SearchResultComponent implements OnInit {
      this.http.get(this.url + 'api/get_list_?subject_id=' + this.subjectId).subscribe(res => {
        this.paper = res;
        console.log(this.paper);
-       this.paperUrl = this.paper.paperType;
+       for ( this.i = 0; this.i < this.paper.length; this.i++) {
+       this.fileUrl = this.paper[this.i].fileUrl;
+       this.paperUrl = this.url + '/Papers/' + this.fileUrl;
+       this.examTypeId = this.paper[this.i].examTypeId;
+       this.sessionId = this.paper[this.i].sessionId;
+       this.semesterType = this.paper[this.i].semesterType;
+       this.paperType = this.paper[this.i].paperType;
+       }
+       switch (this.examTypeId) {
+         case 1: {
+           this.examType = 'ST-1';
+           break;
+         }
+         case 2: {
+           this.examType = 'ST-2';
+           break;
+         }
+         case 3: {
+           this.examType = 'PUT';
+           break;
+         }
+         case 4: {
+           this.examType = 'UT';
+         }
+       }
+
+       switch (this.sessionId) {
+         case 1: {
+           this.session = '2014-2015';
+           break;
+         }
+         case 2: {
+           this.session = '2015-2016';
+           break;
+         }
+         case 3: {
+           this.session = '2016-2017';
+           break;
+         }
+         case 4: {
+           this.session = '2017-2018';
+           break;
+         }
+         case 5: {
+           this.session = '2018-2019';
+         }
+       }
+
+       switch (this.semesterType) {
+         case 1: {
+           this.semester = 'even';
+           break;
+         }
+         case 2: {
+           this.semester = 'odd';
+         }
+       }
        console.log(this.paperUrl);
      });
 

@@ -29,7 +29,7 @@
 
 .search{
     // width:60%;
-    width:300px;
+    width:400px;
     padding-left: 2em;
     border-radius:2em;
     background-color: #fff;
@@ -40,6 +40,9 @@
      &:focus{
         outline: none;
         border: 2px solid blue;
+    }
+    @media only screen and (max-width:575px) {
+        width:60%;
     }
 
 }
@@ -99,9 +102,31 @@
     border-bottom: none;
 }
 
-.details{
-    text-align: center;
+.sub_header{
+    background-color: #BCBCBC;
 }
-.download{
-    text-align: center;
+
+.custom-select{
+    width: 80%;
+    margin: 0.25em 2em;
+    padding-left: 1.5em; 
 }
+
+.mobile_option{
+    @media only screen and (min-width:575px) {
+        display: none;
+    }
+}
+.desktop_option{
+    @media only screen and (max-width:575px) {
+        display: none;
+    }
+}
+
+.custom-select{
+    @media only screen and (max-width:575px) {
+        width: 40%;
+    }
+}
+
+
