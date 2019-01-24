@@ -1,154 +1,163 @@
 <div class="section container-fluid no-gutter">
   <nav class="navbar navbar-expand-sm header">
-
+    
     <a class="navbar-brand brand" href="#">
       <img src="/assets/logo.svg"   class="d-inline-block logo" alt=""> Bytepad
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">&#xF002;</span>
-    </button>
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">&#xF002;</span>
+  </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        
-      </ul>
-      <form class="form-inline">
-        <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" class="form-control search" list="subject" type="search" placeholder="&#xF002; Enter Subject Name or Subject Code" aria-label="Search">
-        <datalist id="subject">
-          <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper">{{testPaper.subjectName}}</option>
-        </datalist>
-        <button class="btn button " type="submit" (click)="search()">Search</button>
-      </form>
-      <div class="row mobile_option">
-        <div class="col-sm-2">
-          <select class="browser-default custom-select">
-            <option selected>All Exams</option>
-            <option value="4">UT</option>
-            <option value="3">PUT</option>
-            <option value="2">ST-2</option>
-            <option value="1">ST-1</option>
-          </select>
-        </div>
-        <div class="col-sm-2">
-          <select class="browser-default custom-select">
-            <option selected>All Years</option>
-            <option value="1">2014-2015</option>
-            <option value="2">2015-2016</option>
-            <option value="3">2016-2017</option>
-            <option value="4">2017-2018</option>
-            <option value="5">2018-2019</option>
-          </select>
-        </div>
-        <div class="col-sm-2">
-          <select class="browser-default custom-select">
-            <option selected>All Paper</option>
-            <option value="Question">Question Paper</option>
-            <option value="Solution">Solution</option>
-          </select>
-        </div>
-        <div class="col-sm-2">
-          <select class="browser-default custom-select">
-            <option selected>Semester</option>
-            <option value="1">Even Semester</option>
-            <option value="2">Odd Semester</option>
-          </select>
-        </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+    </ul>
+    <form class="form-inline">
+      <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" class="form-control search" list="subject" type="search" placeholder="&#xF002; Enter Subject Name or Subject Code" aria-label="Search">
+      <datalist id="subject">
+        <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper">{{testPaper.subjectName}}</option>
+      </datalist>
+      <button class="btn button " type="submit" (click)="search()">Search</button>
+    </form>
+    <div class="row mobile_option">
+      <div class="col-sm-2">
+        <select class="browser-default custom-select">
+          <option value='-1'>All Exams</option>
+          <option value="4">UT</option>
+          <option value="3">PUT</option>
+          <option value="2">ST-2</option>
+          <option value="1">ST-1</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <select class="browser-default custom-select">
+          <option selected>All Years</option>
+          <option value="1">2014-2015</option>
+          <option value="2">2015-2016</option>
+          <option value="3">2016-2017</option>
+          <option value="4">2017-2018</option>
+          <option value="5">2018-2019</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <select class="browser-default custom-select">
+          <option selected>All Paper</option>
+          <option value="Question">Question Paper</option>
+          <option value="Solution">Solution</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <select class="browser-default custom-select">
+          <option selected>Semester</option>
+          <option value="1">Even Semester</option>
+          <option value="2">Odd Semester</option>
+        </select>
       </div>
     </div>
+  </div>
   
-  </nav>
-  <nav class="navbar navbar-expand-sm sub_header desktop_option">
+</nav>
+<nav class="navbar navbar-expand-sm sub_header desktop_option">
   
   
-    
   
-    <div class="collapse navbar-collapse row section justify-content-center" id="navbarSupportedContent">
-     <div class="col-sm-2">
-      <select class="browser-default custom-select">
-        <option selected>All Exams</option>
+  
+  <div class="collapse navbar-collapse row section justify-content-center" id="navbarSupportedContent">
+    <div class="col-sm-2">
+      <select class="browser-default custom-select" [(ngModel)]='filter_examType' (ngModelChange)='onExamTypeChange($event)'>
+        <option value="-1" selected>All Exams</option>
         <option value="4">UT</option>
         <option value="3">PUT</option>
         <option value="2">ST-2</option>
         <option value="1">ST-1</option>
       </select>
-      </div>
-      <div class="col-sm-2">
-      <select class="browser-default custom-select">
-        <option selected>All Years</option>
+    </div>
+    <div class="col-sm-2">
+      <select class="browser-default custom-select" [(ngModel)]='filter_yearType' (ngModelChange)='onYearTypeChange($event)'>
+        <option selected value="-1">All Years</option>
         <option value="1">2014-2015</option>
         <option value="2">2015-2016</option>
         <option value="3">2016-2017</option>
         <option value="4">2017-2018</option>
         <option value="5">2018-2019</option>
       </select>
-      </div>
-      <div class="col-sm-2">
-      <select class="browser-default custom-select">
+    </div>
+    <div class="col-sm-2">
+      <select class="browser-default custom-select" [(ngModel)]='filter_paperType' (ngModelChange)='onPaperTypeChange($event)'>
         <option selected>All Paper</option>
         <option value="Question">Question Paper</option>
         <option value="Solution">Solution</option>
       </select>
-      </div>
-      <div class="col-sm-2">
-      <select class="browser-default custom-select">
-        <option selected>Semester</option>
+    </div>
+    <div class="col-sm-2" >
+      <select class="browser-default custom-select" [(ngModel)]='filter_semType' (ngModelChange)='onSemTypeChange($event)'>
+        <option value="-1" selected>Semester</option>
         <option value="1">Even Semester</option>
         <option value="2">Odd Semester</option>
       </select>
-      </div>
     </div>
+  </div>
   
-  </nav>
-  <!-- <div class="row justify-content-center header section">
-    <div class="col-sm-3">
-      <div class="row section">
-       <div class="col-3 logo"><img src="/assets/logo.svg"></div>
-       <div class="col-6 brand"><h1 class="title">BYTEPAD</h1><br/>
+</nav>
+<!-- <div class="row justify-content-center header section">
+  <div class="col-sm-3">
+    <div class="row section">
+      <div class="col-3 logo"><img src="/assets/logo.svg"></div>
+      <div class="col-6 brand"><h1 class="title">BYTEPAD</h1><br/>
         <span class="sub-title">Powered by Software Incubator</span>'
       </div>
-     </div>
     </div>
-    <div class="col-sm-7">
-       <input type="text" class="search"  placeholder="&#xF002; Enter Subject Name or Subject Code">
-       <button class="btn button">Search</button>
-    </div> -->
+  </div>
+  <div class="col-sm-7">
+    <input type="text" class="search"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+    <button class="btn button">Search</button>
+  </div> -->
   <!-- </div> -->
   <div class="row justify-content-center section">
-    <div class="col-md-6 col-10 search_result" *ngFor = "let paper of paper">
-       <div class="row justify-content-center">
-         <div class="col-sm-10">
-           <h1 class="name">{{ subjectName }}</h1>
-           <hr/>
-           <p class="details"><span class="detail">{{ examType }}</span>
-           <span class="detail">{{ session }}</span>
-           <span class="detail">{{ semester }}</span>
-           <span class="detail">{{ paperType }}</span></p>
-           <hr/>
-          <p class="download"><a href="{{ paperUrl }}" download="{{ subjectName }}"><img src="/assets/download.svg" class="download"><span class="download_text">Download Paper</span></a></p>
-         </div>
+    <div class="col-md-6 col-10 search_result" *ngFor = "let p of paper;">
+      <div class="row justify-content-center">
+        <div class="col-sm-10">
+          <h1 class="name">{{ subjectName }}</h1>
+          <hr/>
+          <p class="details"><span class="detail" *ngIf = "p.examTypeId == 1">ST-1</span>
+            <span class="detail" *ngIf="p.examTypeId == 2">ST-2</span>
+            <span class="detail" *ngIf="p.examTypeId == 3">PUT</span>
+            <span class="detail" *ngIf="p.examTypeId == 4">UT</span>
+            <span class="detail" *ngIf="p.sessionId == 1">2014-2015</span>
+            <span class="detail" *ngIf="p.sessionId == 2">2015-2016</span>
+            <span class="detail" *ngIf="p.sessionId == 3">2016-2017</span>
+            <span class="detail" *ngIf="p.sessionId == 4">2017-2018</span>
+            <span class="detail" *ngIf="p.sessionId == 5">2018-2019</span>
+            <span class="detail" *ngIf="p.semesterType == 1">even</span>
+            <span class="detail" *ngIf="p.semesterType == 2">odd</span>
+            <span class="detail" *ngIf="p.paperType == 'Solution'">Solution</span>
+            <span class="detail" *ngIf="p.paperType == 'Question'">Question</span>
+            <hr/>
+            <p class="download"><a href="{{ url }} +'/Papers/' + {{ p.paperUrl }}" download="{{ p.subjectName }}"><img src="/assets/download.svg" class="download"><span class="download_text">Download Paper</span></a></p>
+          </div>
           
-       </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<button type="button" mdbBtn color="primary" [hidden]="true" id="modal" class="relative waves-light" (click)="basicModal.show()"
+  
+  <button type="button" mdbBtn color="primary" [hidden]="true" id="modal" class="relative waves-light" (click)="basicModal.show()"
   mdbWavesEffect>Launch demo modal</button>
-
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="/assets/not_found.svg" class="not_found_img">
-        <br/> Sorry !
-        <br/> Paper not found
+  
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="/assets/not_found.svg" class="not_found_img">
+          <br/> Sorry !
+          <br/> Paper not found
+        </div>
       </div>
     </div>
   </div>
-</div>

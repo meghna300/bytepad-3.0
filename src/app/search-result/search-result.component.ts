@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform  } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
@@ -6,6 +6,20 @@ import { PaperUrl } from '../paper-url';
 import { TestPaper } from '../test-paper';
 import { Router } from '@angular/router';
 import { SubjectDetails } from '../test-paper';
+
+@Pipe({
+  name: 'filter'
+})
+export class FilterPipe implements PipeTransform {
+  transform(items: Array<any>, filter: { [key: string]: any }): Array<any> {
+    return items.filter(item => {
+      const notMatchingField = Object.keys(filter)
+        .find(key => item[key] !== filter[key]);
+
+      return !notMatchingField; // true if matches all fields
+    });
+  }
+}
 
 @Component({
   selector: 'app-search-result',
@@ -30,6 +44,11 @@ export class SearchResultComponent implements OnInit {
   paper: any;
   paperUrl: String;
   i: number;
+  filter_examType: any;
+  filter_yearType: any;
+  filter_paperType: any;
+  filter_semType: any;
+  filter_paper: any;
   paperDetail: {};
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
@@ -133,6 +152,30 @@ export class SearchResultComponent implements OnInit {
     } else {
       document.getElementById('modal').click();
     }
+  }
+  onPaperTypeChange(event) {
+    this.filter_paperType = event;
+    this.update_filter_paper();
+  }
+  onExamTypeChange(event) {
+    this.filter_examType = event;
+    this.update_filter_paper();
+  }
+  onSemTypeChange(event) {
+    this.filter_semType = event;
+    this.update_filter_paper();
+  }
+  onYearTypeChange(event) {
+    this.filter_yearType = event;
+    this.update_filter_paper();
+  }
+  update_filter_paper() {
+    this.filter_paper = {
+      paperType: this.filter_paperType,
+      examTypeId: this.filter_examType,
+      semesterType: this.filter_semType,
+      sessionId: this.filter_yearType
+    };
   }
 
 }
