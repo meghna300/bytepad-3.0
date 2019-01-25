@@ -23,7 +23,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     UpdateComponent,
     DownloadComponent,
     FooterComponent,
-    SearchResultComponent
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
