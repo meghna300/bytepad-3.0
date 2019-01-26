@@ -1,6 +1,20 @@
 .header{
     background: linear-gradient(#6EB8E6,#7867AE);
     padding:0 4em;
+    @media only screen and (max-width:575px) {
+        padding: 0;
+    }
+
+}
+.brand{
+    @media only screen and (max-width:575px) {
+        padding-left: 1em;
+    }
+}
+.navbar .navbar-toggler {
+     @media only screen and (max-width:575px) {
+        padding-right: 1em;
+    }
 }
 .section{
     margin: 0;
@@ -29,22 +43,21 @@
 
 .search{
     // width:60%;
-    width:400px;
-    padding-left: 2em;
+    width:100%;
+    height: 3em;
+    padding: 0.5em 2em;
     border-radius:2em;
     background-color: #fff;
     border: 1px solid #BCBCBC;
      // margin-left:2em;
     font-family:Arial, FontAwesome;
     font-size:1.25em;
+    box-sizing: border-box;
      &:focus{
         outline: none;
         border: 2px solid blue;
     }
-    @media only screen and (max-width:575px) {
-        width:60%;
-    }
-
+    
 }
 .navbar-toggler-icon{
     font-family: Arial, FontAwesome;
@@ -65,16 +78,28 @@
 }
 
 .download{
+    display: inline-block;
+
     height:20px;
     padding: 1em;
     &_text{
         font-size:1.5em;
+        color:black;
+        font-weight: 400;
+    }
+    &_img{
+        margin-top:-10px;
+        height:20px;
+        margin:0 10px;
     }
 }
 .search_result{
     background-color: rgb(233, 233, 233);
     border-radius:10px;
     margin-top: 4em;
+    &:hover{
+    box-shadow: 3px 0 10px #bcbcbc;
+    }
 }
 .name{
     font-size:4em;
@@ -84,6 +109,8 @@
 .detail{
     font-size: 2em;
     padding:0.25em 0.75em 0 0.75em;
+    color: blue;
+    font-weight: 500;
 }
 
 .modal-content{
@@ -122,6 +149,7 @@
     @media only screen and (min-width:575px) {
         display: none;
     }
+    background-color: #e9e9e9;
 }
 .desktop_option{
     @media only screen and (max-width:575px) {
@@ -130,9 +158,56 @@
 }
 
 .custom-select{
+    font-size:1.5em;
     @media only screen and (max-width:575px) {
         width: 40%;
     }
 }
 
 
+#subjects{
+    display: none;
+    background-color: #fff;
+    border-bottom: 1px solid blue;
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 10;
+    li {
+        padding: 1em 2em;
+        font-size: 1.25em;
+        font-weight: 400;
+        list-style-type: none;
+        box-sizing: border-box;
+    }
+
+    &::-webkit-scrollbar {
+        width:1em;
+    }
+     &::-webkit-scrollbar-thumb {
+         background-color: #eee;
+         border-radius: 1em;
+     }
+  
+}
+
+.form-inline {
+    width:50%;
+    @media only screen and (max-width:982px) {
+        width:80%;
+    }
+     @media only screen and (max-width:690px) {
+        width:90%;
+    }
+     @media only screen and (max-width:575px) {
+        padding-left: 1.5em;
+    }
+}
+
+.input_search {
+    width: 80%;
+}
+hr{
+    margin:0.5em;
+}

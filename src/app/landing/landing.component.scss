@@ -112,6 +112,10 @@
     }
     width: 100%;
     margin-top: -2em;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: -10;
 }
 
 .hvr-radial-out {
@@ -180,11 +184,28 @@
     display: none;
     background-color: #fff;
     border-bottom: 1px solid blue;
-   
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 10;
+   width: auto;
     li {
         padding: 1em 2em;
         font-size: 1.25em;
         font-weight: 400;
         list-style-type: none;
+        box-sizing: border-box;
+        cursor: pointer;
     }
+
+    &::-webkit-scrollbar {
+        width:1em;
+    }
+     &::-webkit-scrollbar-thumb {
+         background-color: #eee;
+         border-radius: 1em;
+     }
+  
 }
+

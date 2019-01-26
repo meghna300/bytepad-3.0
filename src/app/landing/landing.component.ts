@@ -60,6 +60,8 @@ export class LandingComponent implements OnInit {
        const search = document.getElementById('search');
        search.style.borderBottomLeftRadius = '0';
        search.style.borderBottomRightRadius = '0';
+       search.style.borderTopRightRadius = '1em';
+       search.style.borderTopLeftRadius = '1em';
       } else {
        li[i].style.display = 'none';
      }
@@ -69,11 +71,25 @@ export class LandingComponent implements OnInit {
        const search = document.getElementById('search');
        search.style.borderBottomLeftRadius = '2em';
        search.style.borderBottomRightRadius = '2em';
+       search.style.borderTopRightRadius = '2em';
+       search.style.borderTopLeftRadius = '2em';
      }
     }
 
     onSelectPaper(selectedPaper: String) {
       this.subject = selectedPaper;
+    }
+    passValue(paper: String) {
+      this.subject = paper;
+      console.log(paper);
+      const ui = document.getElementById('subjects');
+      ui.style.display = 'none';
+      const search = document.getElementById('search');
+      search.style.borderBottomLeftRadius = '2em';
+      search.style.borderBottomRightRadius = '2em';
+      search.style.borderTopRightRadius = '2em';
+      search.style.borderTopLeftRadius = '2em';
+
     }
   }
 

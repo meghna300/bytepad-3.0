@@ -14,15 +14,19 @@
       
     </ul>
     <form class="form-inline">
-      <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" class="form-control search" list="subject" type="search" placeholder="&#xF002; Enter Subject Name or Subject Code" aria-label="Search">
-      <datalist id="subject">
-        <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper">{{testPaper.subjectName}}</option>
-      </datalist>
+      <div  id="myDropdown" class="input_search">
+        <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" (change)="onPaperChange(subject)" autocomplete="off"
+          id="search" type="text" class="search form-control" placeholder="&#xF002; Enter Subject Name or Subject Code">
+        <ul id="subjects">
+          <li *ngFor="let testPaper of testPapers" (click)="passValue(testPaper.subjectName)">{{testPaper.subjectName}}</li>
+        </ul>
+      
+      </div>
       <button class="btn button " type="submit" (click)="search()">Search</button>
     </form>
     <div class="row mobile_option">
       <div class="col-sm-2">
-        <select class="browser-default custom-select">
+        <select class="browser-default custom-select" [(ngModel)]='filter_examType' (ngModelChange)='onExamTypeChange($event)'>
           <option value=-1 selected>All Exams</option>
           <option value=4>UT</option>
           <option value=3>PUT</option>
@@ -31,7 +35,7 @@
         </select>
       </div>
       <div class="col-sm-2">
-        <select class="browser-default custom-select">
+        <select class="browser-default custom-select" [(ngModel)]='filter_yearType' (ngModelChange)='onYearTypeChange($event)'>
           <option value=-1 selected>All Years</option>
           <option value=1>2014-2015</option>
           <option value=2>2015-2016</option>
@@ -41,14 +45,14 @@
         </select>
       </div>
       <div class="col-sm-2">
-        <select class="browser-default custom-select">
+        <select class="browser-default custom-select" [(ngModel)]='filter_paperType' (ngModelChange)='onPaperTypeChange($event)'>
           <option value="-1" selected>All Paper</option>
           <option value="Question">Question Paper</option>
           <option value="Solution">Solution</option>
         </select>
       </div>
       <div class="col-sm-2">
-        <select class="browser-default custom-select">
+        <select class="browser-default custom-select" [(ngModel)]='filter_semType' (ngModelChange)='onSemTypeChange($event)'>
           <option value=-1 selected>Semester</option>
           <option value=1>Even Semester</option>
           <option value=2>Odd Semester</option>
@@ -134,7 +138,7 @@
             <span class="detail" *ngIf="p.paperType === 'Solution'">Solution</span>
             <span class="detail" *ngIf="p.paperType === 'Question'">Question</span>
             <hr/>
-            <p class="download"><a href="{{ url }}/Papers/{{ p.fileUrl }}" download="{{ p.subjectName }}"><img src="/assets/download.svg" class="download"><span class="download_text">Download Paper</span></a></p>
+            <p class="download"><a href="{{ url }}/Papers/{{ p.fileUrl }}" download="{{ p.subjectName }}"><img src="/assets/download.svg" class="download_img"><span class="download_text">Download Paper</span></a></p>
           </div>
           
         </div>

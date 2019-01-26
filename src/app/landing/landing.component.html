@@ -8,10 +8,10 @@
                   <span class="text">Powered by Software Incubator</span></div>
           
            <div class="col-md-8 col-10" id="myDropdown">
-               <input [(ngModel)]="subject" name='testPaper'(keyup)="searchFunction()" (change)="onPaperChange(subject)"  id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+               <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" (change)="onPaperChange(subject)" autocomplete="off"  id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
                 <ul id="subjects">
-                    <li (click)="onSelectPaper(SelectedPaper)" [(ngModel)]="SelectedPaper">meghna</li>
-                <li *ngFor="let testPaper of testPapers" >{{testPaper.subjectName}}</li>
+
+                <li *ngFor="let testPaper of testPapers" (click)="passValue(testPaper.subjectName)">{{testPaper.subjectName}}</li>
                 </ul>
             
         </div>
