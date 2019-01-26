@@ -7,11 +7,12 @@
                <div class="col-5 heading"><h1 class="heading_title">BYTEPAD</h1> <br>
                   <span class="text">Powered by Software Incubator</span></div>
           
-           <div class="col-md-8 col-10">
-               <input [(ngModel)]="subject" name='testPaper' (change)="onPaperChange(subject)" list="subject" id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
-               <datalist id="subject">
-                <option *ngFor="let testPaper of testPapers" [ngValue]="testPaper" >{{testPaper.subjectName}}</option>
-               </datalist>
+           <div class="col-md-8 col-10" id="myDropdown">
+               <input [(ngModel)]="subject" name='testPaper'(keyup)="searchFunction()" (change)="onPaperChange(subject)"  id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
+                <ul id="subjects">
+                    <li (click)="onSelectPaper(SelectedPaper)" [(ngModel)]="SelectedPaper">meghna</li>
+                <li *ngFor="let testPaper of testPapers" >{{testPaper.subjectName}}</li>
+                </ul>
             
         </div>
           <div class="col-4 example">Ex-Power Electronics or AS201 </div>

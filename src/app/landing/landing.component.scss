@@ -78,7 +78,7 @@
 
     &:focus{
         outline: none;
-        border: 2px solid blue;
+        box-shadow: 2px 2px 10px #bcbcbc;
     }
 }
 
@@ -175,4 +175,16 @@
 }
 .modal-header{
     border-bottom: none;
+}
+#subjects{
+    display: none;
+    background-color: #fff;
+    border-bottom: 1px solid blue;
+   
+    li {
+        padding: 1em 2em;
+        font-size: 1.25em;
+        font-weight: 400;
+        list-style-type: none;
+    }
 }
