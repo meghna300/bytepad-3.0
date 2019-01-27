@@ -64,13 +64,18 @@ export class SearchResultComponent implements OnInit {
       this.testPapers = res;
     });
   }
-  onPaperChange(subjectName: String) {
-    this.paperSelected = this.getSelectedPaperbyName(subjectName);
-  }
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
+    let found: TestPaper;
+    this.testPapers.forEach(testPaper => {
+      if (testPaper.subjectName === selectedName) {
+        found = testPaper;
+      }
+    });
+    return found;
   }
+
   search() {
+    this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
       this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
     } else {
@@ -141,7 +146,6 @@ export class SearchResultComponent implements OnInit {
   }
   passValue(paper: String) {
     this.subject = paper;
-    console.log(paper);
     const ui = document.getElementById('subjects');
     ui.style.display = 'none';
     const search = document.getElementById('search');

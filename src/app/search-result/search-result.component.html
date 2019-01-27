@@ -15,7 +15,7 @@
     </ul>
     <form class="form-inline">
       <div  id="myDropdown" class="input_search">
-        <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" (change)="onPaperChange(subject)" autocomplete="off"
+        <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" autocomplete="off"
           id="search" type="text" class="search form-control" placeholder="&#xF002; Enter Subject Name or Subject Code">
         <ul id="subjects">
           <li *ngFor="let testPaper of testPapers" (click)="passValue(testPaper.subjectName)">{{testPaper.subjectName}}</li>
