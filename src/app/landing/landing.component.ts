@@ -30,16 +30,18 @@ export class LandingComponent implements OnInit {
     });
   }
 
-
-  onPaperChange(subjectName: String) {
-     this.paperSelected  = this.getSelectedPaperbyName(subjectName);
-  }
-
   getSelectedPaperbyName(selectedName: String): TestPaper {
-    return this.testPapers.find(testPaper => testPaper.subjectName === selectedName);
+    let found: TestPaper;
+    this.testPapers.forEach(testPaper => {
+      if (testPaper.subjectName === selectedName) {
+        found = testPaper;
+      }
+    });
+    return found;
   }
 
   search_paper () {
+    this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
        this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
     } else {
@@ -48,7 +50,6 @@ export class LandingComponent implements OnInit {
   }
 
   searchFunction() {
-    // const input = document.getElementById('search');
     const filter = this.subject.toUpperCase();
     const div = document.getElementById('subjects');
     div.style.display = 'block';
@@ -76,12 +77,12 @@ export class LandingComponent implements OnInit {
      }
     }
 
-    onSelectPaper(selectedPaper: String) {
-      this.subject = selectedPaper;
-    }
+    // onSelectPaper(selectedPaper: String) {
+    //   this.subject = selectedPaper;
+    //   console.log(this.subject);
+    // }
     passValue(paper: String) {
       this.subject = paper;
-      console.log(paper);
       const ui = document.getElementById('subjects');
       ui.style.display = 'none';
       const search = document.getElementById('search');
