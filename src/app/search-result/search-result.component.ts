@@ -1,7 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform  } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { TestPaper } from '../test-paper';
 import { Router } from '@angular/router';
 
@@ -40,14 +40,17 @@ export class SearchResultComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
     this.subjectList();
-    this.subjectId = this.route.snapshot.paramMap.get('id');
-    this.subjectName = this.route.snapshot.paramMap.get('name');
+    // this.subjectId = this.route.snapshot.paramMap.get('id');
+    // this.subjectName = this.route.snapshot.queryParamMap.get('subjectName');
+    // console.log(this.subjectId);
+    // this.getPaper();
     this.route.params.subscribe((params: Params) => {
       this.subjectId = params['id'];
-      this.subjectName = params['name'];
       this.getPaper();
     });
-    this.getPaper();
+    this.route.queryParams.subscribe((params: Params) => {
+      this.subjectName = params['subjectName'];
+    });
     this.filter_examType = -1;
     this.filter_paperType = '-1';
     this.filter_semType = -1;
@@ -77,7 +80,7 @@ export class SearchResultComponent implements OnInit {
   search() {
     this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
-      this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
+      this.router.navigate(['search_result', this.paperSelected.id], { queryParams: { subjectName: this.paperSelected.subjectName } });
     } else {
       document.getElementById('modal').click();
     }

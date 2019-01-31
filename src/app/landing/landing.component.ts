@@ -2,7 +2,7 @@ import { TestPaper } from '../test-paper';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { NgsRevealConfig } from 'ng-scrollreveal';
 
 @Component({
@@ -43,7 +43,7 @@ export class LandingComponent implements OnInit {
   search_paper () {
     this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
-       this.router.navigate(['search_result', this.paperSelected.id, this.paperSelected.subjectName]);
+       this.router.navigate(['search_result', this.paperSelected.id], { queryParams: { subjectName: this.paperSelected.subjectName}});
     } else {
       document.getElementById('modal').click();
     }
