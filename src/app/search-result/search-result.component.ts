@@ -34,31 +34,28 @@ export class SearchResultComponent implements OnInit {
   filter_paperType: any;
   filter_semType: any;
   paperDetail: {};
+  selectedPaperId: Number;
+  resultedPaper: any;
   r: any;
   nopapers: boolean;
+  error: boolean;
   filteredPapers: any[];
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
     this.subjectList();
-    // this.subjectId = this.route.snapshot.paramMap.get('id');
-    // this.subjectName = this.route.snapshot.queryParamMap.get('subjectName');
-    // console.log(this.subjectId);
-    // this.getPaper();
-    this.route.params.subscribe((params: Params) => {
-      this.subjectId = params['id'];
-      this.getPaper();
-    });
-    this.route.queryParams.subscribe((params: Params) => {
-      this.subjectName = params['subjectName'];
-    });
+    this.getPapers();
+    // this.route.params.subscribe((params: Params) => {
+    //   this.subjectId = params['id'];
+    //   this.getSelectedPaper();
+    // });
     this.filter_examType = -1;
     this.filter_paperType = '-1';
     this.filter_semType = -1;
     this.filter_yearType = -1;
   }
-  getPaper() {
-    this.http.get(this.url + 'api/get_list_?subject_id=' + this.subjectId).subscribe(res => {
-      this.paper = res;
+  getSelectedPaper(selectedPaperId) {
+    this.http.get(this.url + 'api/get_list_?subject_id=' + selectedPaperId).subscribe(res => {
+      this.resultedPaper = res;
       this.checkNoOfFilterPapers();
     });
   }
@@ -66,6 +63,16 @@ export class SearchResultComponent implements OnInit {
     this.http.get<TestPaper[]>(this.url + 'api/subject_detail').subscribe(res => {
       this.testPapers = res;
     });
+  }
+  getPapers() {
+    this.http.get(this.url + 'api/get_list_').subscribe(res => {
+      this.paper = res;
+      console.log(this.resultedPaper);
+      this.checkNoOfFilterPapers();
+    }, error => {
+      this.error = true;
+    }
+    );
   }
   getSelectedPaperbyName(selectedName: String): TestPaper {
     let found: TestPaper;
@@ -80,7 +87,8 @@ export class SearchResultComponent implements OnInit {
   search() {
     this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
-      this.router.navigate(['search_result', this.paperSelected.id], { queryParams: { subjectName: this.paperSelected.subjectName } });
+      this.selectedPaperId = this.paperSelected.id;
+      this.getSelectedPaper(this.selectedPaperId);
     } else {
       document.getElementById('modal').click();
     }
@@ -105,6 +113,7 @@ export class SearchResultComponent implements OnInit {
   checkNoOfFilterPapers() {
     this.filteredPapers = [];
     this.nopapers = true;
+    if (!this.resultedPaper) {
     this.paper.forEach(p => {
       if ((this.filter_paperType === '-1' || p.paperType === this.filter_paperType)
       && (this.filter_examType === -1 || p.examTypeId === this.filter_examType)
@@ -114,6 +123,17 @@ export class SearchResultComponent implements OnInit {
         this.nopapers = false;
       }
     });
+  } else {
+      this.resultedPaper.forEach(p => {
+        if ((this.filter_paperType === '-1' || p.paperType === this.filter_paperType)
+          && (this.filter_examType === -1 || p.examTypeId === this.filter_examType)
+          && (this.filter_semType === -1 || p.semesterType === this.filter_semType)
+          && (this.filter_yearType === -1 || p.sessionId === this.filter_yearType)) {
+          this.filteredPapers.push(p);
+          this.nopapers = false;
+        }
+      });
+  }
   }
   searchFunction() {
     // const input = document.getElementById('search');

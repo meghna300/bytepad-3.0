@@ -4,19 +4,12 @@
         <div class="landing">
            <div class="row section justify-content-center">
                <div class="heading_logo col-2"><img src="/assets/logo.svg"></div>
-               <div class="col-5 heading"><h1 class="heading_title">BYTEPAD</h1> <br>
-                  <span class="text">Powered by Software Incubator</span></div>
+               <div class="col-5 heading"><img src="/assets/bytepad_typo.svg">
+                  </div>
           
-           <div class="col-md-8 col-10" id="myDropdown">
-               <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" autocomplete="off"  id="search" type="text" class="search form-control"  placeholder="&#xF002; Enter Subject Name or Subject Code">
-                <ul id="subjects">
-
-                <li *ngFor="let testPaper of testPapers" (click)="passValue(testPaper.subjectName)">{{testPaper.subjectName}}</li>
-                </ul>
-            
-        </div>
-          <div class="col-4 example">Eg: Compiler Design or CS-602 </div>
-          <div class="col-4"><button class="btn button hvr-radial-out" (click)="search_paper()" >Search</button></div>
+          <div class="col-10" style="text-align:center;"><h1>Powered by <span style="color:black;font-weight:400;">SOFTWARE INCUBATOR</span></h1></div>
+          <div class="col-8"><button class="btn button hvr-radial-out" (click)="search_paper()" >Enter Library</button></div>
+          <div class="col-6" style="font-size:2.15em;text-align:center;font-weight:300;">All the best for exam</div>
           </div>
         
         </div> 
