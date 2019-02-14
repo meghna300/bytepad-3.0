@@ -22,7 +22,7 @@
         </ul>
       
       </div>
-      <button class="btn button " type="submit" (click)="search()">Search</button>
+      <button class="btn button " type="submit" (click)="search()" data-toggle="collapse" data-target="#navbarSupportedContent">Search</button>
     </form>
     <div class="row mobile_option no-gutter">
       <div class="col-sm-2">
@@ -120,20 +120,7 @@
   </div>
   
 </nav>
-<!-- <div class="row justify-content-center header section">
-  <div class="col-sm-3">
-    <div class="row section">
-      <div class="col-3 logo"><img src="/assets/logo.svg"></div>
-      <div class="col-6 brand"><h1 class="title">BYTEPAD</h1><br/>
-        <span class="sub-title">Powered by Software Incubator</span>'
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-7">
-    <input type="text" class="search"  placeholder="&#xF002; Enter Subject Name or Subject Code">
-    <button class="btn button">Search</button>
-  </div> -->
-  <!-- </div> -->
+
   <div *ngIf="!nopapers" class="row justify-content-center section">
     <div class="col-md-6 col-10 search_result" *ngFor = "let p of filteredPapers;">
       <div class="row justify-content-center">
@@ -167,44 +154,6 @@
           
         </div>
       </div>
-      <!-- <div class="col-md-6 col-10 search_result" *ngFor="let p of filteredPapers;" *ngIf="resultedPaper">
-        <div class="row justify-content-center">
-          <div class="col-sm-10">
-            <h1 class="name">{{ p.subjectName }}</h1>
-            <hr/>
-            <p class="details">
-              <span class="detail" *ngIf="p.examTypeId === 1">UT</span>
-              <span class="detail" *ngIf="p.examTypeId === 2">PUT</span>
-              <span class="detail" *ngIf="p.examTypeId === 3">ST-1</span>
-              <span class="detail" *ngIf="p.examTypeId === 4">ST-2</span>
-              <span class="detail" *ngIf="p.sessionId === 1">2012-2013</span>
-              <span class="detail" *ngIf="p.sessionId === 2">2013-2014</span>
-              <span class="detail" *ngIf="p.sessionId === 3">2014-2015</span>
-              <span class="detail" *ngIf="p.sessionId === 4">2015-2016</span>
-              <span class="detail" *ngIf="p.sessionId === 5">2016-2017</span>
-              <span class="detail" *ngIf="p.sessionId === 6">2017-2018</span>
-              <span class="detail" *ngIf="p.sessionId === 7">2018-2019</span>
-              <span class="detail" *ngIf="p.sessionId === 8">2019-2020</span>
-              <span class="detail" *ngIf="p.sessionId === 9">2020-2021</span>
-              <span class="detail" *ngIf="p.sessionId === 10">2021-2022</span>
-              <span class="detail" *ngIf="p.sessionId === 11">2022-2023</span>
-              <span class="detail" *ngIf="p.sessionId === 12">2023-2024</span>
-              <span class="detail" *ngIf="p.sessionId === 13">2024-2025</span>
-              <span class="detail" *ngIf="p.semesterType === 1">Even Sem</span>
-              <span class="detail" *ngIf="p.semesterType === 2">Odd Sem</span>
-              <span class="detail" *ngIf="p.paperType === 'Solution'">Solution</span>
-              <span class="detail" *ngIf="p.paperType === 'Question'">Question</span>
-              <hr/>
-              <p class="download">
-                <a href="{{ url }}/Papers/{{ p.fileUrl }}" download="{{ p.subjectName }}">
-                  <img src="/assets/download.svg" class="download_img">
-                  <span class="download_text">Download Paper</span>
-                </a>
-              </p>
-          </div>
-      
-        </div>
-      </div> -->
     </div>
     <div *ngIf="nopapers || error" class="hvcenter text-center">
       <img src="/assets/not_found.svg" width=100px>
