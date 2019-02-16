@@ -100,6 +100,9 @@
     &:hover{
     box-shadow: 3px 0 10px #bcbcbc;
     }
+    &:last-child{
+        margin-bottom: 10px;
+    }
 }
 .name{
     text-transform: uppercase;
@@ -146,6 +149,11 @@
     padding-left: 1.5em; 
 }
 
+.pageination /deep/ .ngx-pagination{
+    font-size: 2em;
+    text-align: center;
+    margin: 1em 0;
+}
 .mobile_option{
     @media only screen and (min-width:575px) {
         display: none;

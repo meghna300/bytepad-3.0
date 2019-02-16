@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgsRevealModule } from 'ng-scrollreveal';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,

@@ -40,6 +40,8 @@ export class SearchResultComponent implements OnInit {
   nopapers: boolean;
   error: boolean;
   filteredPapers: any[];
+  p: Number = 1;
+  currentPage: Number;
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
     this.subjectList();
@@ -83,7 +85,11 @@ export class SearchResultComponent implements OnInit {
     });
     return found;
   }
-
+  handle(e) {
+     if (e.keycode === 13) {
+       this.search();
+     }
+  }
   search() {
     this.paperSelected = this.getSelectedPaperbyName(this.subject);
     if (this.paperSelected) {
@@ -177,5 +183,9 @@ export class SearchResultComponent implements OnInit {
     search.style.borderTopRightRadius = '2em';
     search.style.borderTopLeftRadius = '2em';
 
+  }
+  onPageChange(page: number) {
+    this.p = page;
+    window.scrollTo(0, 0);
   }
 }

@@ -1,5 +1,6 @@
 <div class="section container-fluid no-gutter">
-  <nav class="navbar navbar-expand-sm header">
+  <div class="sticky-top">
+  <nav class="navbar navbar-expand-sm header sticky-top">
     
     <a class="navbar-brand brand" href="#">
       <img src="/assets/logo.svg"   class="d-inline-block logo" alt=""> Bytepad
@@ -15,7 +16,7 @@
     </ul>
     <form class="form-inline">
       <div  id="myDropdown" class="input_search">
-        <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" autocomplete="off"
+        <input [(ngModel)]="subject" name='testPaper' (keyup)="searchFunction()" autocomplete="off" ng-keypress="handle($event)"
           id="search" type="text" class="search form-control" placeholder="&#xF002; Enter Subject Name or Subject Code">
         <ul id="subjects">
           <li *ngFor="let testPaper of testPapers" (click)="passValue(testPaper.subjectName)">{{testPaper.subjectName}}</li>
@@ -70,11 +71,7 @@
   </div>
   
 </nav>
-<nav class="navbar navbar-expand-sm sub_header desktop_option">
-  
-  
-  
-  
+<nav class="navbar navbar-expand-sm sub_header desktop_option"> 
   <div class="collapse navbar-collapse row section justify-content-center" id="navbarSupportedContent">
     <div class="col-sm-2">
       <select class="browser-default custom-select" [(ngModel)]='filter_examType' (ngModelChange)='onExamTypeChange($event)'>
@@ -120,9 +117,10 @@
   </div>
   
 </nav>
+</div>
 
   <div *ngIf="!nopapers" class="row justify-content-center section">
-    <div class="col-md-6 col-10 search_result" *ngFor = "let p of filteredPapers;">
+    <div class="col-md-6 col-10 search_result" *ngFor = "let p of filteredPapers | paginate: { itemsPerPage: 20, currentPage: p }">
       <div class="row justify-content-center">
         <div class="col-sm-10" >
           <h1 class="name">{{ p.subjectName }}</h1>
@@ -154,7 +152,10 @@
           
         </div>
       </div>
+
+    
     </div>
+      <pagination-controls (pageChange)="onPageChange($event)" class="pageination" autoHide="true" responsive="true"></pagination-controls>
     <div *ngIf="nopapers || error" class="hvcenter text-center">
       <img src="/assets/not_found.svg" width=100px>
       <h1 *ngIf="nopapers && !error" style="margin: 15px">No Papers Found</h1>
